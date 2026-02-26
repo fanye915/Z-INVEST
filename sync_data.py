@@ -35,7 +35,7 @@ total_amount = {
 }
 
 def get_fund_data(codes):
-    """获取新浪财经的基金数据"""
+    """获取新浪财经的基金数据，适配不同类型基金的返回格式"""
     url = f"https://hq.sinajs.cn/list={','.join(codes)}"
     headers = {
         "Referer": "https://finance.sina.com.cn/"
@@ -49,9 +49,19 @@ def get_fund_data(codes):
             code = line.split("=")[0].replace("var hq_str_", "")
             values = line.split('"')[1].split(",")
             if len(values) >= 4:
+                # 尝试获取当前价格，先试A股格式（values[3]），不行的话试港股/美股格式（values[1]）
+                current_price = None
+                try:
+                    current_price = float(values[3])
+                except ValueError:
+                    try:
+                        current_price = float(values[1])
+                    except ValueError:
+                        print(f"警告：基金{code}的返回格式异常，无法获取当前价格，返回值：{values[:10]}")
+                        continue
                 data[code] = {
                     "name": values[0],
-                    "current_price": float(values[3]),
+                    "current_price": current_price,
                     "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 }
     return data
@@ -89,23 +99,25 @@ def main():
         total_profit = 0
         total_current = 0
         for fund in category:
-            if fund["code"] in fund_data:
-                current_price = fund_data[fund["code"]]["current_price"]
-                profit_data = calculate_profit(fund, current_price, total_amount[category_name])
-                category_result.append({
-                    "code": fund["code"],
-                    "name": fund["name"],
-                    "cost_price": fund["cost_price"],
-                    **profit_data
-                })
-                total_profit += profit_data["profit"]
-                total_current += profit_data["current_total"]
+            if fund["code"] not in fund_data:
+                print(f"警告：未获取到 {fund['name']}（{fund['code']}）的数据，跳过该基金")
+                continue
+            current_price = fund_data[fund["code"]]["current_price"]
+            profit_data = calculate_profit(fund, current_price, total_amount[category_name])
+            category_result.append({
+                "code": fund["code"],
+                "name": fund["name"],
+                "cost_price": fund["cost_price"],
+                **profit_data
+            })
+            total_profit += profit_data["profit"]
+            total_current += profit_data["current_total"]
         result[category_name] = {
             "funds": category_result,
             "total_amount": total_amount[category_name],
             "total_current": total_current,
             "total_profit": total_profit,
-            "total_profit_rate": round((total_profit / total_amount[category_name]) * 100, 2),
+            "total_profit_rate": round((total_profit / total_amount[category_name]) * 100, 2) if total_amount[category_name] !=0 else 0,
             "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
     
@@ -114,8 +126,12 @@ def main():
         json.dump(result, f, ensure_ascii=False, indent=2)
     
     # 更新index.html里的更新时间和实时价格
-    with open("index.html", "r", encoding="utf-8") as f:
-        html_content = f.read()
+    try:
+        with open("index.html", "r", encoding="utf-8") as f:
+            html_content = f.read()
+    except FileNotFoundError:
+        print("错误：未找到index.html文件，请确认文件在根目录")
+        return
     
     # 更新每个组合的更新时间
     for category_name, short_name in [("a_share", "a"), ("hk_share", "hk"), ("us_share", "us")]:
