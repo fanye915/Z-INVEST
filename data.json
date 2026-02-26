@@ -1,0 +1,194 @@
+{
+  "a_share": {
+    "funds": [
+      {
+        "code": "sh513390",
+        "name": "纳指100ETF",
+        "cost_price": 2.1,
+        "hold": 119047.62,
+        "current_price": 2.027,
+        "position_amount": 250000.0,
+        "current_total": 241309.52,
+        "profit": -8690.48,
+        "profit_rate": -3.48
+      },
+      {
+        "code": "sz159652",
+        "name": "有色50ETF",
+        "cost_price": 7.09,
+        "hold": 35260.93,
+        "current_price": 2.012,
+        "position_amount": 250000.0,
+        "current_total": 70944.99,
+        "profit": -179055.01,
+        "profit_rate": -71.62
+      },
+      {
+        "code": "sh588200",
+        "name": "科创芯片ETF",
+        "cost_price": 10.73,
+        "hold": 23299.16,
+        "current_price": 2.727,
+        "position_amount": 250000.0,
+        "current_total": 63536.81,
+        "profit": -186463.19,
+        "profit_rate": -74.59
+      },
+      {
+        "code": "sh515880",
+        "name": "通信ETF",
+        "cost_price": 5.09,
+        "hold": 29469.55,
+        "current_price": 1.112,
+        "position_amount": 150000.0,
+        "current_total": 32770.14,
+        "profit": -117229.86,
+        "profit_rate": -78.15
+      },
+      {
+        "code": "sh518880",
+        "name": "黄金ETF",
+        "cost_price": 4.4,
+        "hold": 22727.27,
+        "current_price": 10.913,
+        "position_amount": 100000.0,
+        "current_total": 248022.73,
+        "profit": 148022.73,
+        "profit_rate": 148.02
+      }
+    ],
+    "total_amount": 1000000,
+    "total_current": 656584.1900000001,
+    "total_profit": -343415.81000000006,
+    "total_profit_rate": -34.34,
+    "update_time": "2026-02-26 14:55:26"
+  },
+  "hk_share": {
+    "funds": [
+      {
+        "code": "hk03455",
+        "name": "纳指100ETF",
+        "cost_price": 10.0,
+        "hold": 25000.0,
+        "current_price": 4755.0,
+        "position_amount": 250000.0,
+        "current_total": 118875000.0,
+        "profit": 118625000.0,
+        "profit_rate": 47450.0
+      },
+      {
+        "code": "hk03132",
+        "name": "全球半导体ETF",
+        "cost_price": 8.0,
+        "hold": 25000.0,
+        "current_price": 46.98,
+        "position_amount": 200000.0,
+        "current_total": 1174500.0,
+        "profit": 974500.0,
+        "profit_rate": 487.25
+      },
+      {
+        "code": "hk03147",
+        "name": "中国创业板ETF",
+        "cost_price": 5.0,
+        "hold": 40000.0,
+        "current_price": 13.3,
+        "position_amount": 200000.0,
+        "current_total": 532000.0,
+        "profit": 332000.0,
+        "profit_rate": 166.0
+      },
+      {
+        "code": "hk03110",
+        "name": "恒生高股息ETF",
+        "cost_price": 6.0,
+        "hold": 33333.33,
+        "current_price": 34.1,
+        "position_amount": 200000.0,
+        "current_total": 1136666.67,
+        "profit": 936666.67,
+        "profit_rate": 468.33
+      },
+      {
+        "code": "hk02840",
+        "name": "黄金ETF",
+        "cost_price": 7.0,
+        "hold": 21428.57,
+        "current_price": 3727.0,
+        "position_amount": 150000.0,
+        "current_total": 79864285.71,
+        "profit": 79714285.71,
+        "profit_rate": 53142.86
+      }
+    ],
+    "total_amount": 1000000,
+    "total_current": 201582452.38,
+    "total_profit": 200582452.38,
+    "total_profit_rate": 20058.25,
+    "update_time": "2026-02-26 14:55:26"
+  },
+  "us_share": {
+    "funds": [
+      {
+        "code": "gb_qqq",
+        "name": "纳指100ETF",
+        "cost_price": 620.0,
+        "hold": 403.23,
+        "current_price": 612.8,
+        "position_amount": 250000.0,
+        "current_total": 247096.77,
+        "profit": -2903.23,
+        "profit_rate": -1.16
+      },
+      {
+        "code": "gb_spy",
+        "name": "标普500ETF",
+        "cost_price": 500.0,
+        "hold": 500.0,
+        "current_price": 691.185,
+        "position_amount": 250000.0,
+        "current_total": 345592.5,
+        "profit": 95592.5,
+        "profit_rate": 38.24
+      },
+      {
+        "code": "gb_ring",
+        "name": "全球黄金矿股ETF",
+        "cost_price": 40.0,
+        "hold": 5000.0,
+        "current_price": 94.845,
+        "position_amount": 200000.0,
+        "current_total": 474225.0,
+        "profit": 274225.0,
+        "profit_rate": 137.11
+      },
+      {
+        "code": "gb_copx",
+        "name": "全球铜矿股ETF",
+        "cost_price": 30.0,
+        "hold": 6666.67,
+        "current_price": 92.71,
+        "position_amount": 200000.0,
+        "current_total": 618066.67,
+        "profit": 418066.67,
+        "profit_rate": 209.03
+      },
+      {
+        "code": "gb_bitb",
+        "name": "大饼ETF",
+        "cost_price": 49.0,
+        "hold": 2040.82,
+        "current_price": 36.73,
+        "position_amount": 100000.0,
+        "current_total": 74959.18,
+        "profit": -25040.82,
+        "profit_rate": -25.04
+      }
+    ],
+    "total_amount": 1000000,
+    "total_current": 1759940.1199999999,
+    "total_profit": 759940.12,
+    "total_profit_rate": 75.99,
+    "update_time": "2026-02-26 14:55:26"
+  }
+}
