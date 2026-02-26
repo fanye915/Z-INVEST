@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-INVEST 投资组合追踪</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Z-INVEST 投资组合追踪</title>
+<style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft Yahei", Arial, sans-serif; }
         body { background-color: #f0f2f5; padding: 30px 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
@@ -28,150 +28,146 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Z-INVEST 投资组合追踪（100万仓位）</h1>
-        <p class="refresh-hint">💡 打开网页自动获取实时数据，数据不对请刷新页面</p>
-
-        <!-- A股组合 -->
-        <div class="portfolio-card">
-            <h2 class="portfolio-title">A股精选组合（人民币/100万仓位）</h2>
-            <div class="summary-row">
-                <div class="summary-item">
-                    <span class="summary-label">总成本（元）</span>
-                    <span class="summary-value">1000000.00</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">当前价值（元）</span>
-                    <span class="summary-value" id="a-total-value"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">总收益（元）</span>
-                    <span class="summary-value" id="a-total-profit"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">收益率</span>
-                    <span class="summary-value" id="a-total-rate"><span class="loading">加载中...</span></span>
-                </div>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>代码</th>
-                        <th>名称</th>
-                        <th>持仓数量</th>
-                        <th>成本价（元）</th>
-                        <th>实时价（元）</th>
-                        <th>成本总额（元）</th>
-                        <th>当前总额（元）</th>
-                        <th>收益（元）</th>
-                        <th>收益率</th>
-                    </tr>
-                </thead>
-                <tbody id="a-table">
-                    <tr><td>513390</td><td>纳指100ETF</td><td>119047.62</td><td>2.10</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>159652</td><td>有色50ETF</td><td>35260.93</td><td>7.09</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>588200</td><td>科创芯片ETF</td><td>23300.00</td><td>10.73</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>515880</td><td>通信ETF</td><td>29469.55</td><td>5.09</td><td class="loading">加载中...</td><td>150000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>518880</td><td>黄金ETF</td><td>22727.27</td><td>4.40</td><td class="loading">加载中...</td><td>100000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                </tbody>
-            </table>
-            <div class="update-time" id="a-update-time">数据更新时间: 加载中...</div>
-        </div>
-
-        <!-- 港股组合 -->
-        <div class="portfolio-card">
-            <h2 class="portfolio-title">港股价值组合（港币/100万仓位）</h2>
-            <div class="summary-row">
-                <div class="summary-item">
-                    <span class="summary-label">总成本（港币）</span>
-                    <span class="summary-value">1000000.00</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">当前价值（港币）</span>
-                    <span class="summary-value" id="hk-total-value"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">总收益（港币）</span>
-                    <span class="summary-value" id="hk-total-profit"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">收益率</span>
-                    <span class="summary-value" id="hk-total-rate"><span class="loading">加载中...</span></span>
-                </div>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>代码</th>
-                        <th>名称</th>
-                        <th>持仓数量</th>
-                        <th>成本价（港币）</th>
-                        <th>实时价（港币）</th>
-                        <th>成本总额（港币）</th>
-                        <th>当前总额（港币）</th>
-                        <th>收益（港币）</th>
-                        <th>收益率</th>
-                    </tr>
-                </thead>
-                <tbody id="hk-table">
-                    <tr><td>03455</td><td>纳指100ETF</td><td>25000.00</td><td>10.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>03132</td><td>全球半导体ETF</td><td>25000.00</td><td>8.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>03147</td><td>中国创业板ETF</td><td>40000.00</td><td>5.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>03110</td><td>恒生高股息ETF</td><td>33333.33</td><td>6.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>02840</td><td>黄金ETF</td><td>21428.57</td><td>7.00</td><td class="loading">加载中...</td><td>150000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                </tbody>
-            </table>
-            <div class="update-time" id="hk-update-time">数据更新时间: 加载中...</div>
-        </div>
-
-        <!-- 美股组合 -->
-        <div class="portfolio-card">
-            <h2 class="portfolio-title">美股全球组合（美元/100万仓位）</h2>
-            <div class="summary-row">
-                <div class="summary-item">
-                    <span class="summary-label">总成本（美元）</span>
-                    <span class="summary-value">1000000.00</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">当前价值（美元）</span>
-                    <span class="summary-value" id="us-total-value"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">总收益（美元）</span>
-                    <span class="summary-value" id="us-total-profit"><span class="loading">加载中...</span></span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">收益率</span>
-                    <span class="summary-value" id="us-total-rate"><span class="loading">加载中...</span></span>
-                </div>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>代码</th>
-                        <th>名称</th>
-                        <th>持仓数量</th>
-                        <th>成本价（美元）</th>
-                        <th>实时价（美元）</th>
-                        <th>成本总额（美元）</th>
-                        <th>当前总额（美元）</th>
-                        <th>收益（美元）</th>
-                        <th>收益率</th>
-                    </tr>
-                </thead>
-                <tbody id="us-table">
-                    <tr><td>QQQ</td><td>纳指100ETF</td><td>403.23</td><td>620.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>SPY</td><td>标普500ETF</td><td>500.00</td><td>500.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>RING</td><td>全球黄金矿股ETF</td><td>5000.00</td><td>40.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>COPX</td><td>全球铜矿股ETF</td><td>6666.67</td><td>30.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                    <tr><td>BITB</td><td>大饼ETF</td><td>2040.82</td><td>49.00</td><td class="loading">加载中...</td><td>100000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
-                </tbody>
-            </table>
-            <div class="update-time" id="us-update-time">数据更新时间: 加载中...</div>
-        </div>
-    </div>
-
-    <script>
+<div class="container">
+<h1>Z-INVEST 投资组合追踪（100万仓位）</h1>
+<p class="refresh-hint">💡 打开网页自动获取实时数据，数据不对请刷新页面</p>
+<!-- A股组合 -->
+<div class="portfolio-card">
+<h2 class="portfolio-title">A股精选组合（人民币/100万仓位）</h2>
+<div class="summary-row">
+<div class="summary-item">
+<span class="summary-label">总成本（元）</span>
+<span class="summary-value">1000000.00</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">当前价值（元）</span>
+<span class="summary-value" id="a-total-value">1000008.99</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">总收益（元）</span>
+<span class="profit-positive" id="a-total-profit">8.99</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">收益率</span>
+<span class="summary-value" id="a-total-rate">0.00%</span>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+<th>持仓数量</th>
+<th>成本价（元）</th>
+<th>实时价（元）</th>
+<th>成本总额（元）</th>
+<th>当前总额（元）</th>
+<th>收益（元）</th>
+<th>收益率</th>
+</tr>
+</thead>
+<tbody id="a-table">
+<tr><td>513390</td><td>纳指100ETF</td><td>119047.62</td><td>2.10</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>159652</td><td>有色50ETF</td><td>35260.93</td><td>7.09</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>588200</td><td>科创芯片ETF</td><td>23300.00</td><td>10.73</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>515880</td><td>通信ETF</td><td>29469.55</td><td>5.09</td><td class="loading">加载中...</td><td>150000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>518880</td><td>黄金ETF</td><td>22727.27</td><td>4.40</td><td class="loading">加载中...</td><td>100000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+</tbody>
+</table>
+<div class="update-time" id="a-update-time">数据更新时间: 2026-02-26 15:50:54</div>
+</div>
+<!-- 港股组合 -->
+<div class="portfolio-card">
+<h2 class="portfolio-title">港股价值组合（港币/100万仓位）</h2>
+<div class="summary-row">
+<div class="summary-item">
+<span class="summary-label">总成本（港币）</span>
+<span class="summary-value">1000000.00</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">当前价值（港币）</span>
+<span class="summary-value" id="hk-total-value">999999.97</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">总收益（港币）</span>
+<span class="profit-negative" id="hk-total-profit">-0.03</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">收益率</span>
+<span class="summary-value" id="hk-total-rate">-0.00%</span>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+<th>持仓数量</th>
+<th>成本价（港币）</th>
+<th>实时价（港币）</th>
+<th>成本总额（港币）</th>
+<th>当前总额（港币）</th>
+<th>收益（港币）</th>
+<th>收益率</th>
+</tr>
+</thead>
+<tbody id="hk-table">
+<tr><td>03455</td><td>纳指100ETF</td><td>25000.00</td><td>10.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>03132</td><td>全球半导体ETF</td><td>25000.00</td><td>8.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>03147</td><td>中国创业板ETF</td><td>40000.00</td><td>5.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>03110</td><td>恒生高股息ETF</td><td>33333.33</td><td>6.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>02840</td><td>黄金ETF</td><td>21428.57</td><td>7.00</td><td class="loading">加载中...</td><td>150000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+</tbody>
+</table>
+<div class="update-time" id="hk-update-time">数据更新时间: 2026-02-26 15:51:00</div>
+</div>
+<!-- 美股组合 -->
+<div class="portfolio-card">
+<h2 class="portfolio-title">美股全球组合（美元/100万仓位）</h2>
+<div class="summary-row">
+<div class="summary-item">
+<span class="summary-label">总成本（美元）</span>
+<span class="summary-value">1000000.00</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">当前价值（美元）</span>
+<span class="summary-value" id="us-total-value">1759227.30</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">总收益（美元）</span>
+<span class="profit-positive" id="us-total-profit">759227.30</span>
+</div>
+<div class="summary-item">
+<span class="summary-label">收益率</span>
+<span class="summary-value" id="us-total-rate">75.92%</span>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+<th>持仓数量</th>
+<th>成本价（美元）</th>
+<th>实时价（美元）</th>
+<th>成本总额（美元）</th>
+<th>当前总额（美元）</th>
+<th>收益（美元）</th>
+<th>收益率</th>
+</tr>
+</thead>
+<tbody id="us-table">
+<tr><td>QQQ</td><td>纳指100ETF</td><td>403.23</td><td>620.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>SPY</td><td>标普500ETF</td><td>500.00</td><td>500.00</td><td class="loading">加载中...</td><td>250000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>RING</td><td>全球黄金矿股ETF</td><td>5000.00</td><td>40.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>COPX</td><td>全球铜矿股ETF</td><td>6666.67</td><td>30.00</td><td class="loading">加载中...</td><td>200000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+<tr><td>BITB</td><td>大饼ETF</td><td>2040.82</td><td>49.00</td><td class="loading">加载中...</td><td>100000.00</td><td class="loading">加载中...</td><td class="loading">加载中...</td><td class="loading">加载中...</td></tr>
+</tbody>
+</table>
+<div class="update-time" id="us-update-time">数据更新时间: 2026-02-26 15:51:04</div>
+</div>
+</div>
+<script>
         // 固定配置
         const PORTFOLIOS = {
             a: {
